@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/restoran/:match*",
+      "destination": "https://your-qr-app.vercel.app/restoran/:match*",
+      "permanent": false
+    }
+  ]
+}

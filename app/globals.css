@@ -1,0 +1,1550 @@
+/* ==================================== */
+/* General Style Settings               */
+/* ==================================== */
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-size: 100%; /* Base for rem units, 1rem = 16px */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+:root {
+    /* Refreshed Color Palette */
+    --primary-color: #5cb85c; /* Vibrant and natural green */
+    --primary-dark-color: #4CAF50; /* A darker shade of primary */
+    --secondary-color: #2c3e50; /* Dark navy/gray - for strong headings */
+    --accent-color: #f39c12; /* Accent color, for buttons or special areas */
+    --text-color-dark: #34495e; /* Dark gray text */
+    --text-color-light: #7f8c8d; /* Medium gray text, softer */
+    --bg-light: #fcfcfc; /* Very light background */
+    --bg-medium: #edf2f7; /* Medium gray background, light tone */
+    --bg-hero-gradient-start: #e0f2f7; /* Hero gradient start (light blue-green) */
+    --bg-hero-gradient-end: #d1e8ef; /* Hero gradient end */
+    --border-color: #e0e0e0; /* Border color */
+    --white: #ffffff;
+    --black: var(--secondary-color); /* Use secondary color for black text */
+
+    /* Custom colors for specific buttons/sections that were previously hardcoded */
+    --google-play-green: #4CAF50;
+    --google-play-dark-green: #388E3C;
+    --apple-blue: #007AFF;
+    --apple-dark-blue: #005BBF;
+    --faq-bg: #f8f8f8;
+    --faq-plus-icon: #007bff; /* Primary blue for plus icon */
+    --faq-minus-icon: #dc3545; /* Red for minus icon */
+
+    /* Font Sizes */
+    --font-size-base: 1.05rem; /* 16.8px - more readable */
+    --font-size-h1: clamp(2.5rem, 6vw, 4.2rem); /* Responsive H1 */
+    --font-size-h2: clamp(2rem, 5vw, 3.2rem);   /* Responsive H2 */
+    --font-size-h3: clamp(1.4rem, 3vw, 2rem);   /* Responsive H3 */
+    --font-size-p: 1.15rem; /* Larger and more readable paragraph */
+    --font-size-small: 0.95rem;
+
+    /* Spacing */
+    --spacing-xs: 0.625rem; /* 10px */
+    --spacing-sm: 1.25rem;  /* 20px */
+    --spacing-md: 1.875rem; /* 30px */
+    --spacing-lg: 3.75rem;  /* 60px */
+    --spacing-xl: 5.625rem; /* 90px */
+    --spacing-xxl: 7.5rem;  /* 120px */
+
+    /* Shadow Effects */
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.07);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.15);
+    --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+
+    /* Other */
+    --border-radius-sm: 0.5rem;    /* 8px */
+    --border-radius-md: 1rem;    /* 16px */
+    --border-radius-lg: 1.5rem;    /* 24px */
+    --transition-speed: 0.4s; /* Slower and smoother transitions */
+    --transition-ease: cubic-bezier(0.2, 0.8, 0.2, 1); /* Smooth cubic-bezier */
+}
+
+body, html {
+    overflow-x: hidden; /* Bu satırı ekleyin veya olduğundan emin olun */
+    width: 100%; /* Sayfanın genişliğini tam olarak ayarlar */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+    color: var(--text-color-dark);
+    line-height: 1.7;
+    font-size: var(--font-size-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Central container to keep content within a specific width */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Common Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--secondary-color);
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ==================================== */
+/* Hero Section Styles                  */
+/* ==================================== */
+.hero-section {
+    display: flex;
+    flex-direction:column ;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-sm);
+    background: linear-gradient(135deg, var(--bg-hero-gradient-start) 0%, var(--bg-hero-gradient-end) 100%);
+    text-align: center;
+    gap: var(--spacing-lg);
+    overflow: hidden;
+    min-height: 80vh;
+    position: relative;
+    border-bottom-left-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="%23d9e2ec" fill-opacity="0.1"/></svg>');
+    background-repeat: repeat;
+    background-size: 80px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hero-content {
+    max-width: 700px;
+    z-index: 1;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp var(--transition-speed) var(--transition-ease) forwards;
+}
+
+.hero-content h1 {
+    font-weight: 800;
+    color: var(--secondary-color);
+    letter-spacing: -0.5px;
+    font-size: var(--font-size-h1);
+}
+
+.hero-content p {
+    font-weight: 400;
+    color: var(--text-color-light);
+    font-size: var(--font-size-p);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-subtext {
+    font-size: var(--font-size-small);
+    color: var(--text-color-light);
+    margin-top: var(--spacing-sm);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05em;
+    transition: all var(--transition-speed) var(--transition-ease);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    min-width: 220px;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 20px rgba(92, 184, 92, 0.3);
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-dark-color);
+    border-color: var(--primary-dark-color);
+    box-shadow: 0 10px 30px rgba(92, 184, 92, 0.4);
+    transform: translateY(-5px);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(92, 184, 92, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Ad Card Stilleri  */
+.hero-ad-card {
+    position: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    padding: var(--spacing-sm);
+    text-align: center;
+    z-index: 1;
+    
+}
+
+.ad-card-content {
+    padding: var(--spacing-sm);
+    z-index: 2;
+    position: relative;
+}
+
+.ad-card-content h2 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--spacing-sm);
+    color: var(--white);
+}
+
+.ad-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.ad-features li {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xs);
+}
+
+.check-mark {
+    color: var(--primary-color);
+    margin-right: var(--spacing-xs);
+}
+
+.ad-card-content p {
+    font-size: var(--font-size-small);
+    margin-bottom: var(--spacing-sm);
+}
+
+.ad-buttons {
+    margin-top: var(--spacing-sm);
+}
+
+.google-play-btn {
+    background-color: var(--google-play-green);
+    color: var(--white);
+    border-color: var(--google-play-green);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.25);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-sm);
+}
+
+.google-play-btn:hover {
+    background-color: var(--google-play-dark-green);
+    border-color: var(--google-play-dark-green);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+.ad-logo {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    text-align: center;
+    margin-top: var(--spacing-sm);
+}
+
+.ad-logo span {
+    color: var(--primary-color);
+}
+
+/* Bu kısım Next.js Image'in kendisi değil, ad kartının arka plan görseli gibi davranıyor olabilir. */
+/* Eğer Next.js Image bileşeni kullanılıyorsa, onu da sarmalayıcı div içine almalısınız. */
+.ad-card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Sığdırma şeklini belirler */
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* Next.js Image için sarmalayıcı stilleri */
+.hero-image-wrapper {
+  position: relative; /* fill prop'u için MUTLAKA relative olmalı */
+  width: 100%; /* Kapsayıcı div'in genişliği */
+  height: 350px; /* Görselin yüksekliği, responsive ayarlayın */
+  overflow: hidden; /* Taşmayı engellemek için */
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-medium);
+  max-width: 500px; /* Hero section için uygun bir max-width */
+  margin: 0 auto; /* Eğer flex konteynerde değilse ortalamak için */
+}
+
+/* Next.js Image bileşenine uygulanan sınıf */
+.hero-main-image {
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* Responsive Adjustments (for screens above 768px) */
+@media (min-width: 768px) {
+    .hero-section {
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-around;
+        padding: var(--spacing-xxl) var(--spacing-md);
+        gap: var(--spacing-xl);
+    }
+
+    .hero-content {
+        flex-basis: 50%;
+        margin-right: var(--spacing-lg);
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-h1);
+    }
+
+    .hero-content p {
+        font-size: var(--font-size-p);
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        justify-content: flex-start;
+        margin: 0;
+    }
+
+    .hero-ad-card {
+        flex-basis: 30%;
+        margin-top: 0;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================================== */
+/* What is Kapırtı Section Styles       */
+/* ==================================== */
+.kapirti-nedir-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.kapirti-nedir-section h2 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.kapirti-nedir-section .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+}
+
+.kapirti-nedir-section .text-content {
+    flex: 1;
+    max-width: 650px;
+    padding: 0 var(--spacing-sm);
+}
+
+.kapirti-nedir-section .text-content h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.kapirti-nedir-section .text-content p {
+    font-size: var(--font-size-p);
+    line-height: 1.8;
+    color: var(--text-color-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.kapirti-nedir-section .image-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+    align-items: center;
+    max-width: 550px;
+    position: relative;
+    margin: 0 auto;
+    padding: var(--spacing-sm);
+}
+
+/* Kapırtı Nedir Section - Next.js Image Wrapper */
+.kapirti-nedir-image-wrapper { /* Yeni sarmalayıcı sınıfı */
+    position: relative;
+    width: 100%;
+    height: 300px; /* Yüksekliği ayarlayın */
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-medium);
+    transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+}
+
+.kapirti-nedir-image-wrapper:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-strong);
+}
+
+.kapirti-nedir-image { /* Next.js Image bileşenine uygulanacak sınıf */
+object-fit: contain; /* Resmin en boy oranını koruyarak kutuya sığdırır, boşluklar oluşabilir */
+  object-position: center; /* Görseli ortalar */
+}
+
+
+/* Kapırtı Nedir Section Responsive Adjustments */
+@media (min-width: 768px) {
+    .kapirti-nedir-section .content-wrapper {
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .kapirti-nedir-section .text-content {
+        padding-right: var(--spacing-xl);
+        text-align: center;
+    }
+    .kapirti-nedir-section .text-content h2 {
+        text-align: center;
+    }
+    .kapirti-nedir-section .text-content p {
+        margin: 0;
+    }
+    .kapirti-nedir-section .image-gallery {
+        grid-template-columns: 1fr; /* Eğer iki görseli üst üste kullanıyorsanız bu kuralı dikkatli kullanın */
+        padding: 0;
+    }
+    /* Overlay effect for two images - Sadece bir resim varsa bu kısmı kullanmayın */
+    /*
+    .kapirti-nedir-section .image-gallery .kapirti-nedir-image-wrapper:first-child {
+        position: relative;
+        z-index: 2;
+    }
+    .kapirti-nedir-section .image-gallery .kapirti-nedir-image-wrapper:nth-child(2) {
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        width: 80%;
+        height: 80%; // İkinci resmin yüksekliğini de ayarlayın
+        box-shadow: var(--shadow-medium);
+        transform: rotate(-5deg);
+        z-index: 1;
+    }
+    */
+}
+
+/* ==================================== */
+/* Featured Features Section Styles     */
+/* ==================================== */
+.features-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--bg-medium);
+    text-align: center;
+}
+
+.features-section h2 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    justify-items: center;
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    border-bottom: 4px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+    border-bottom-color: var(--primary-color);
+}
+
+.feature-icon {
+    font-size: 4em;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    display: block;
+    line-height: 1;
+}
+
+.feature-card h3 {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-card p {
+    font-size: var(--font-size-base);
+    color: var(--text-color-light);
+    line-height: 1.7;
+}
+
+/* ==================================== */
+/* How It Works Section Styles          */
+/* ==================================== */
+.how-it-works-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.how-it-works-section h2 {
+    margin-bottom: var(--spacing-xl);
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    justify-content: center;
+    align-items: center;
+}
+
+.step-card {
+    background: linear-gradient(145deg, var(--bg-hero-gradient-start), var(--bg-medium));
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    width: 100%;
+    transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.step-number {
+    width: 70px;
+    height: 70px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0 auto 30px auto;
+    border: 4px solid var(--white);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.step-card h3 {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.step-card p {
+    font-size: var(--font-size-base);
+    color: var(--text-color-light);
+    line-height: 1.7;
+}
+
+/* How It Works Section - Image Wrapper */
+.how-it-works-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Resmin yüksekliğini kontrol edin */
+  max-width: 900px; /* .how-it-works-image div'inin max-width'i ile aynı */
+  margin: var(--spacing-xl) auto; /* Ortalamak ve üst/alt boşluk vermek için */
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-strong);
+  transition: transform var(--transition-speed) ease; /* Hover efekti için */
+}
+
+.how-it-works-image-wrapper:hover { /* Wrapper'a hover efekti verdik */
+  transform: scale(1.005);
+}
+
+
+.how-it-works-main-image {
+  object-fit: contain; /* Resmin en boy oranını koruyarak kutuya sığdırır, boşluklar oluşabilir */
+  object-position: center; /* Görseli ortalar */
+}
+
+/* How It Works Section Responsive Adjustments */
+@media (min-width: 768px) {
+    .steps-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: var(--spacing-md);
+    }
+    .step-card {
+        flex: 1;
+    }
+}
+
+@media (min-width: 992px) {
+    .steps-container {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* ==================================== */
+/* Real Businesses Experience Section Styles */
+/* ==================================== */
+.testimonials-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--bg-hero-gradient-start);
+    text-align: center;
+}
+
+.testimonials-section h2 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.testimonials-section .section-description {
+    font-size: var(--font-size-p);
+    color: var(--text-color-light);
+    max-width: 900px;
+    margin: 0 auto var(--spacing-xl) auto;
+    line-height: 1.7;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    justify-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.testimonial-card {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+    text-align: left;
+    max-width: 420px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-card::before {
+    content: '\201C';
+    font-family: serif;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-size: 150px;
+    color: rgba(92, 184, 92, 0.08);
+    z-index: 0;
+    line-height: 1;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Restaurant Logo Wrapper */
+.restaurant-logo-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm); /* Testimonial Card içinde olduğu için margin auto kaldırdım */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Küçülmesini engellemek için */
+  z-index: 1; /* Alıntı işaretinin üzerinde olması için */
+}
+
+.restaurant-logo { /* Next.js Image bileşenine uygulanan sınıf */
+    object-fit: cover; /* Logolar için genellikle cover daha iyidir, yuvarlak kapsayıcıyı doldurur */
+    object-position: center; /* Logoyu ortalamak için */
+}
+
+
+.testimonial-card blockquote {
+    font-size: 1.15em;
+    font-style: italic;
+    color: var(--text-color-dark);
+    line-height: 1.8;
+    margin: 0 0 var(--spacing-sm) 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+}
+
+.testimonial-card .author {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* Testimonial Main Image Wrapper */
+.testimonial-main-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Resmin yüksekliğini kontrol edin */
+  max-width: 1000px; /* .testimonial-main-image div'inin max-width'i ile aynı */
+  margin: var(--spacing-xl) auto; /* Ortalamak ve üst/alt boşluk vermek için */
+  overflow: hidden;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-strong);
+  transition: transform var(--transition-speed) ease; /* Hover efekti için */
+}
+
+.testimonial-main-image-wrapper:hover { /* Wrapper'a hover efekti verdik */
+  transform: scale(1.005);
+}
+
+.testimonial-full-image {
+  object-fit: contain; /* Resmin en boy oranını koruyarak kutuya sığdırır, boşluklar oluşabilir */
+  object-position: center; /* Görseli ortalar */
+}
+
+
+/* ==================================== */
+/* Frequently Asked Questions (FAQ) Section Styles */
+/* ==================================== */
+.faq-section {
+    padding: var(--spacing-xxl) var(--spacing-sm);
+    background-color: var(--faq-bg);
+    text-align: center;
+}
+
+.faq-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-section h2 {
+    font-size: var(--font-size-h2);
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-xl);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.faq-item {
+    background-color: var(--white);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.faq-item.active {
+    box-shadow: var(--shadow-medium);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-p);
+    font-weight: 600;
+    color: var(--text-color-dark);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    outline: none;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.8em;
+    color: var(--faq-plus-icon);
+    font-weight: 500;
+    margin-left: var(--spacing-xs);
+    transition: transform 0.3s ease, content 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-question.active::after {
+    content: '–';
+    color: var(--faq-minus-icon);
+}
+
+.faq-answer {
+    max-height: 0;
+    padding: 0 var(--spacing-md);
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.faq-answer.open {
+    max-height: 500px;
+    padding-bottom: var(--spacing-sm);
+}
+
+.faq-answer p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: var(--font-size-base);
+    color: var(--text-color-light);
+    line-height: 1.7;
+}
+
+/* Responsive Adjustments for Images (eklendi ve güncellendi) */
+@media (max-width: 768px) {
+  .hero-image-wrapper {
+    height: 250px; /* Tablet ve küçük laptoplar için Hero görsel yüksekliği */
+  }
+  .kapirti-nedir-image-wrapper {
+      height: 250px; /* Tablet ve küçük laptoplar için Kapırtı Nedir görsel yüksekliği */
+  }
+  .how-it-works-image-wrapper {
+    height: 350px; /* Tablet ve küçük laptoplar için Nasıl Çalışır görsel yüksekliği */
+  }
+  .testimonial-main-image-wrapper {
+    height: 350px; /* Tablet ve küçük laptoplar için Testimonial ana görsel yüksekliği */
+  }
+  .restaurant-logo-wrapper {
+      width: 70px;
+      height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image-wrapper {
+    height: 200px; /* Mobil cihazlar için Hero görsel yüksekliği */
+  }
+  .kapirti-nedir-image-wrapper {
+      height: 200px; /* Mobil cihazlar için Kapırtı Nedir görsel yüksekliği */
+  }
+  .how-it-works-image-wrapper {
+    height: 280px; /* Mobil cihazlar için Nasıl Çalışır görsel yüksekliği */
+  }
+  .testimonial-main-image-wrapper {
+    height: 280px; /* Mobil cihazlar için Testimonial ana görsel yüksekliği */
+  }
+  .restaurant-logo-wrapper {
+      width: 60px;
+      height: 60px;
+  }
+}
+
+/* Genel Responsive İyileştirmeler */
+.container {
+    max-width: 1280px; /* Bu max-width'i daha büyük ekranlar için koruyun */
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    overflow: hidden; /* Taşmayı engeller */
+}
+
+/* Küçük ekranlarda hero section esnekliğini ayarlama */
+@media (max-width: 1010px) { /* 1010px'e kadar olan boşluk için hedef */
+    .hero-section {
+        /* Eğer bu aralıkta sağa taşma oluyorsa */
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm); /* Daha güvenli bir padding deneyin */
+        gap: var(--spacing-md); /* Belki daha küçük bir gap */
+    }
+
+    .hero-content, .hero-ad-card {
+        flex-basis: auto; /* Esnekliklerini otomatikye bırakın */
+        max-width: 100%; /* Kapsayıcının %100'ünü kaplasınlar */
+    }
+
+    /* Görsel sarmalayıcıları için daha sıkı kontrol */
+    .hero-image-wrapper,
+    .kapirti-nedir-image-wrapper,
+    .how-it-works-image-wrapper,
+    .testimonial-main-image-wrapper {
+        width: calc(100% - (var(--spacing-md) * 2)); /* Container padding'ini hesaba kat */
+        margin-left: auto;
+        margin-right: auto;
+        /* Veya sadece max-width'i düşürün: */
+        max-width: 600px; /* Bu aralık için daha uygun bir max-width */
+    }
+
+    .how-it-works-image-wrapper,
+    .testimonial-main-image-wrapper {
+        height: 450px; /* Bu aralıkta belki daha az yükseklik */
+    }
+
+}
+
+
+/* 768px altındaki ekranlar için mevcut kurallarınız */
+@media (max-width: 768px) {
+    .hero-image-wrapper {
+      height: 250px;
+      max-width: 100%; /* Emin olmak için */
+    }
+    .kapirti-nedir-image-wrapper {
+        height: 250px;
+        max-width: 100%; /* Emin olmak için */
+    }
+    .how-it-works-image-wrapper {
+      height: 350px;
+      max-width: 100%; /* Emin olmak için */
+    }
+    .testimonial-main-image-wrapper {
+      height: 350px;
+      max-width: 100%; /* Emin olmak için */
+    }
+    .restaurant-logo-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+  .hero-image-wrapper {
+    height: 200px;
+  }
+  .kapirti-nedir-image-wrapper {
+      height: 200px;
+  }
+  .how-it-works-image-wrapper {
+    height: 280px;
+  }
+  .testimonial-main-image-wrapper {
+    height: 280px;
+  }
+  .restaurant-logo-wrapper {
+      width: 60px;
+      height: 60px;
+  }
+}
+
+
+/* Responsive Adjustments for FAQ */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: var(--spacing-lg) var(--spacing-xs);
+    }
+
+    .faq-section h2 {
+        font-size: 2.2em;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .faq-question {
+        font-size: 1.1em;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .faq-question::after {
+        font-size: 1.5em;
+    }
+
+    .faq-answer {
+        font-size: 0.95em;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .faq-answer.open {
+        padding-bottom: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-question {
+        padding: 15px 18px;
+    }
+    .faq-answer {
+        padding: 0 18px;
+    }
+    .faq-answer.open {
+        padding-bottom: 18px;
+    }
+}
+
+/* ==================================== */
+/* CTA (Call to Action) Section Styles  */
+/* ==================================== */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark-color) 100%);
+    color: var(--white);
+    padding: var(--spacing-xxl) var(--spacing-md);
+    text-align: center;
+    border-top-left-radius: var(--border-radius-lg);
+    border-top-right-radius: var(--border-radius-lg);
+    margin-top: var(--spacing-xl);
+    box-shadow: var(--shadow-medium);
+}
+
+.cta-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-h2);
+}
+
+.cta-content p {
+    font-size: var(--font-size-p);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.app-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-speed) var(--transition-ease);
+    font-size: 1.05em;
+    min-width: 200px;
+    border: 2px solid transparent;
+}
+
+.app-download-btn i {
+    margin-right: 10px;
+    font-size: 1.4em;
+}
+
+.google-play-btn {
+    background-color: var(--google-play-green);
+    color: var(--white);
+    border-color: var(--google-play-green);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.25);
+}
+
+.google-play-btn:hover {
+    background-color: var(--google-play-dark-green);
+    border-color: var(--google-play-dark-green);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+.app-store-btn {
+    background-color: var(--apple-blue);
+    color: var(--white);
+    border-color: var(--apple-blue);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.25);
+}
+
+.app-store-btn:hover {
+    background-color: var(--apple-dark-blue);
+    border-color: var(--apple-dark-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 122, 255, 0.4);
+}
+
+.cta-section .secondary-btn {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+}
+
+.cta-section .secondary-btn:hover {
+    background-color: var(--bg-medium);
+    border-color: var(--bg-medium);
+    color: var(--primary-dark-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* CTA Section Responsive Adjustments */
+@media (min-width: 768px) {
+    .cta-content {
+        text-align: center;
+    }
+}
+
+/* ==================================== */
+/* Footer Section Styles                */
+/* ==================================== */
+.main-footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
+    font-size: var(--font-size-small);
+}
+
+.main-footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.footer-brand, .footer-links, .footer-social, .footer-contact {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-brand h3 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-brand p {
+    color: rgba(236, 240, 241, 0.85);
+}
+
+.footer-links h4,
+.footer-social h4,
+.footer-contact h4 {
+    font-size: 1.3em;
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.footer-links h4::after,
+.footer-social h4::after,
+.footer-contact h4::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-links ul li a {
+    color: rgba(236, 240, 241, 0.85);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-color);
+}
+
+.social-icons {
+    margin-top: var(--spacing-sm);
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.social-icons a {
+    color: var(--white);
+    font-size: 2em;
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-5px) scale(1.1);
+}
+
+.footer-contact p {
+    margin-bottom: var(--spacing-xs);
+    color: rgba(236, 240, 241, 0.85);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(236, 240, 241, 0.15);
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.footer-legal a {
+    color: rgba(236, 240, 241, 0.7);
+    text-decoration: none;
+    margin: 0 var(--spacing-xs);
+    transition: color var(--transition-speed) ease;
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+/* Footer Responsive Adjustments */
+@media (min-width: 768px) {
+    .main-footer .footer-content {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: left;
+    }
+    .footer-links h4::after,
+    .footer-social h4::after,
+    .footer-contact h4::after {
+        left: 0;
+        transform: translateX(0);
+    }
+    .social-icons {
+        justify-content: flex-start;
+    }
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* === FIX: Görsel sarmalayıcılar responsive taşma önlemesi === */
+.hero-image-wrapper,
+.kapirti-nedir-image-wrapper,
+.how-it-works-image-wrapper,
+.testimonial-main-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* === FIX: .container için taşmayı önleyici güvenlik ayarı === */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* === FIX: Ana sarıcı için opsiyonel sınıf === */
+.page-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* === HERO SECTION – SAĞDA GÖRSEL, SOLDa METİN === */
+.hero-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-xxl) var(--spacing-md);
+  background: linear-gradient(135deg, var(--bg-hero-gradient-start), var(--bg-hero-gradient-end));
+  border-bottom-left-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.hero-content {
+  flex: 1 1 500px;
+  max-width: 600px;
+  text-align: left;
+}
+
+.hero-content h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 800;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-content p {
+  font-size: var(--font-size-p);
+  color: var(--text-color-light);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.hero-subtext {
+  font-size: var(--font-size-small);
+  color: var(--text-color-light);
+  margin-top: var(--spacing-sm);
+}
+
+.hero-ad-card {
+  flex: 1 1 400px;
+  max-width: 450px;
+}
+
+.hero-image-wrapper {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+
+.hero-main-image {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* === KAPIRTI NEDİR – SOL METİN, SAĞDA TELEFON MOCKUP === */
+.kapirti-nedir-section .content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+
+.kapirti-nedir-section .text-content {
+  flex: 1 1 500px;
+  max-width: 600px;
+  text-align: left;
+  padding-right: var(--spacing-lg);
+}
+
+.kapirti-nedir-section .image-gallery {
+  flex: 1 1 400px;
+  max-width: 450px;
+}
+
+.kapirti-nedir-image-wrapper {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+
+/* === MOBİL DÜZEN === */
+@media (max-width: 768px) {
+  .hero-section,
+  .kapirti-nedir-section .content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content,
+  .kapirti-nedir-section .text-content {
+    max-width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-ad-card,
+  .kapirti-nedir-section .image-gallery {
+    max-width: 100%;
+  }
+
+  .hero-image-wrapper,
+  .kapirti-nedir-image-wrapper {
+    aspect-ratio: 9 / 16;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* === HERO SECTION DÜZENLEMESİ === */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-sm);
+  background: linear-gradient(135deg, var(--bg-hero-gradient-start), var(--bg-hero-gradient-end));
+  border-bottom-left-radius: var(--border-radius-lg);
+  border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  color: var(--text-color-light);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  margin-top: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.hero-subtext {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+  margin-top: var(--spacing-sm);
+}
+
+.hero-ad-card {
+  width: 100%;
+  max-width: 450px;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-main-image {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Masaüstü için yatay hizalama */
+@media (min-width: 768px) {
+  .hero-section {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: var(--spacing-xxl) var(--spacing-md);
+  }
+
+  .hero-content {
+    flex: 1;
+    text-align: left;
+  }
+
+  .hero-buttons {
+    justify-content: flex-start;
+  }
+
+  .hero-ad-card {
+    flex: 1;
+  }
+}
